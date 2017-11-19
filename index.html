@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Omegabet</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="pridejs-config-duration" content="regular">
+	<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,700' rel='stylesheet' type='text/css'>
+	<script>
+	(function(){
+		if (window.navigator.language) {
+			var _theLang = 'en';
+			if (window.navigator.language.indexOf('zh') !== -1) {
+				_theLang = 'zh';
+			};
+			document.getElementsByTagName('html')[0].setAttribute('data-jn-lang', _theLang);
+		};
+	})();
+	</script>
+	<style type="text/css">
+	html[data-jn-lang="en"] .chinese-only {
+		display: none;
+	}
+	html[data-jn-lang="zh"] .english-only {
+		display: none;
+	}
+	body[data-string-empty="true"] .fade-when-input-box-empty {
+		opacity: 0;
+	}
+	</style>
+	<style type="text/css">
+	._desktop-linecompact {
+		display: inline-block;
+	}
+	._desktop-linebreak {
+		display: block;
+	}
+	@media screen and (max-width: 767px) {
+		.desktop-only {
+			display: none;
+		}
+		._desktop-linecompact {
+			display: block;
+		}
+		._desktop-linebreak {
+			display: inline-block;
+		}
+	}
+	</style>
+	<style type="text/css">
+	* {
+		text-rendering: optimizeLegibility;
+		box-sizing: border-box;
+		transition: all 200ms ease;
+	}
+	body {
+		font-family: 'Source Code Pro', Seravek, 'Open Sans', 'Helvetica Neue', Helvetica, 'Lucida Grande', Arial, 'Arial-Black', 'Arial Black', 'Hiragino Sans GB', 'Heiti SC', 'Microsoft YaHei', sans-serif;
+		font-size: 18px;
+		font-weight: 300;
+		color: #FFF;
+		color: #666;
+		background: #2089DA;
+		background: #F2F2F2;
+		padding: 0;
+		margin: 0;
+	}
+	.cont {
+		width: auto;
+		max-width: 700px;
+		padding: 1px 24px 0;
+		margin: 0 auto;
+	}
+	.content {
+		margin: 1.6rem 0 0;
+	}
+	h1 {
+		font-size: 26px;
+		/*letter-spacing: 0.02rem;*/
+		/*height: 0px;*/
+		margin: 1.6rem 0 0.4rem;
+		/*overflow: hidden;*/
+	}
+	h2 {
+		font-size: 16px;
+		font-weight: 500;
+		letter-spacing: 0.12rem;
+		text-transform: uppercase;
+		opacity: 1;
+		margin: 0.8rem 0;
+	}
+	h3 {
+		font-size: 14px;
+		font-weight: 400;
+		opacity: 0.8;
+		margin: 0.8rem 0;
+	}
+	textarea {
+		font-family: 'Source Code Pro', 'Menlo', 'Consolas', 'Monaco', Seravek, 'Open Sans', 'Helvetica Neue', Helvetica, 'Lucida Grande', Arial, 'Arial-Black', 'Arial Black', 'Hiragino Sans GB', 'Heiti SC', 'Microsoft YaHei', sans-serif;
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 26px;
+		word-wrap: break-word;
+		word-break: break-all;
+		box-shadow: rgba(0, 0, 0, 0.044) 0 1px 2px;
+		border: none;
+		border-radius: 3px;
+		outline: none;
+
+		display: block;
+		width: 100%;
+		height: 20vh;
+		padding: 6px;
+		margin: 0;
+
+		resize: none;
+	}
+	@media screen and (max-height: 500px) {
+		textarea {
+			height: 6rem;
+		}
+	}
+	#ta-encoded {
+		visibility: hidden;
+	}
+	footer {
+		font-size: 13px;
+		font-weight: 400;
+		color: #666;
+
+		padding: 2rem 0 2rem;
+	}
+	footer a {
+		opacity: 0.5;
+		transition: none;
+	}
+	footer a:hover {
+		opacity: 1;
+	}
+	/* ---------------------------------------- */
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+	</style>
+	<style>
+	.bookmarklet-anchor-hidden-text {
+		font-size: 0px;
+	}
+	.bookmarklet-anchor-hidden-text::before {
+		font-size: 13px;
+	}
+	</style>
+	<script>
+	function focus () {
+		document.getElementById('userinputtext').focus();
+	};
+	</script>
+</head>
+<body onclick="focus()" data-string-empty="true">
+	<div class="cont" onclick="focus()">
+		<h1><a href="./">Omegabet</a></h1>
+		<h3>Replace [A-Za-z] with other characters without damaging human readability.</h3>
+		<div class="content" id="userinputtext-container">
+			<h2><label for="userinputtext">Original Text</label></h2>
+			<textarea id="userinputtext" autofocus></textarea>
+		</div>
+		<div class="content fade-when-input-box-empty" id="ta-encoded-container">
+			<h2>Encoded Text</h2>
+			<textarea id="ta-encoded" readonly></textarea>
+		</div>
+		<footer class="desktop-only fade-when-input-box-empty">
+			<div class="_desktop-linecompact">
+				<a href="//joyneop.xyz/">Created by <strong>Joy Neop (a.k.a. Neruthes)</strong>.</a>
+			</div>
+			<!-- <div class="_desktop-linecompact chinese-only" style="color: #08C;">
+				<a href="http://gold.xitu.io/#/entry/56cc9abf7db2a20051b08d10">收录于稀土掘金.</a>
+			</div> -->
+			<div class="_desktop-linecompact english-only">
+				<a class="__link-to-bookmarklet" href=""><span class="bookmarklet-anchor-hidden-text">Omegabet</span></a>
+			</div>
+			<div class="_desktop-linecompact chinese-only">
+				<a class="__link-to-bookmarklet" href=""><span class="bookmarklet-anchor-hidden-text">Omegabet</span></a>
+			</div>
+		</footer>
+	</div>
+	<script>
+	var alphabetMapping = {
+		'A': 'Α',
+		'a': 'ɑ',
+		'B': 'Β',
+		'b': 'β',
+		'C': 'Ϲ',
+		'c': 'ϲ',
+		'D': 'Ⅾ',
+		'd': 'ⅾ',
+		'E': '𝖤',
+		'e': '𝖾',
+		'F': 'Ϝ',
+		'f': 'f',
+		'G': 'G',
+		'g': 'g',
+		'H': 'Η',
+		'h': 'h',
+		'I': 'Ι',
+		'i': 'i',
+		'J': 'J',
+		'j': 'ϳ',
+		'K': 'Κ',
+		'k': 'k',
+		'L': 'L',
+		'l': 'l',
+		'M': 'Μ',
+		'm': 'm',
+		'N': 'Ν',
+		'n': 'n',
+		'O': 'Ο',
+		'o': 'ο',
+		'P': 'Ρ',
+		'p': 'p',
+		'Q': 'Q',
+		'q': 'q',
+		'R': 'R',
+		'r': 'r',
+		'S': 'S',
+		's': 's',
+		'T': 'Τ',
+		't': 't',
+		'U': 'U',
+		'u': 'u',
+		'V': 'V',
+		'v': 'ν',
+		'W': 'W',
+		'w': 'w',
+		'X': 'Χ',
+		'x': 'x',
+		'Y': 'Y',
+		'y': 'y',
+		'Z': 'Z',
+		'z': 'z',
+		',': '٫',
+		'.': '܂',
+		';': ';'
+	};
+	var localStorageKey = 'TransliterationInputText_20171119-0001-0001-0001';
+	var justEncode = function (originalText) {
+		localStorage[localStorageKey] = document.getElementById('userinputtext').value;
+		var tmpOutput = originalText.split('');
+
+		for (var i = 0; i < tmpOutput.length; i++) {
+			if (alphabetMapping[tmpOutput[i]] !== undefined) {
+				tmpOutput[i] = alphabetMapping[tmpOutput[i]];
+			};
+		};
+		return tmpOutput.join('');
+	};
+
+	var userInputEventHandler = function () {
+		document.getElementById('ta-encoded').value = justEncode(document.getElementById('userinputtext').value);
+		if (document.getElementById('userinputtext').value.length !== 0) {
+			document.body.setAttribute('data-string-empty', 'false');
+		};
+	};
+	document.getElementById('userinputtext').addEventListener('input', userInputEventHandler);
+	userInputEventHandler();
+	document.getElementById('ta-encoded').style.visibility = 'visible';
+
+	var taEncodedFocusEventHandler = function () {
+		setTimeout(function () {
+			document.getElementById('ta-encoded').select();
+		}, 10);
+	};
+
+	document.getElementById('ta-encoded').addEventListener('focus', taEncodedFocusEventHandler);
+	document.getElementById('ta-encoded').addEventListener('click', taEncodedFocusEventHandler);
+	</script>
+	<!-- <script src="https://cdn.rawgit.com/JoyNeop/gay-pride.js/master/pride.js"></script> -->
+</body>
+</html>
